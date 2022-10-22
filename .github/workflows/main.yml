@@ -7,11 +7,22 @@ on:
       - master
   
 name: k6 Load Test
-
 jobs:
-  build:
-    runs-on: [macos-latest, ubuntu-latest]
+  k6_ubuntu_load_test:
+    name: k6 Ubuntu Load Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
 
+      - name: Run local k6 test
+        uses: grafana/k6-action@v0.2.0
+        with:
+          filename: script.js
+          
+  k6_macos_load_test:
+    name: k6 Macos Load Test
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v1
