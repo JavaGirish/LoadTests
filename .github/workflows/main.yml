@@ -1,9 +1,16 @@
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  
 name: k6 Load Test
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: [macos-latest, ubuntu-latest]
 
     steps:
       - name: Checkout
